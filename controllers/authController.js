@@ -27,6 +27,7 @@ const signupController = async (req, res) => {
 const loginController = async (req, res) => {
     try {
         const { email, password } = req.body;
+        
         if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/) || password.length < 8) {
             return res.status(400).send({ success: false, message: 'email or password is invalid' })
         }
