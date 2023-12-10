@@ -1,7 +1,7 @@
 const User = require('../models/user');
 const { hashPassword, comparePassword, generateToken } = require("../helpers/authHelper");
 
-const registerUser = async (req, res) => {
+const signupController = async (req, res) => {
     try {
         const { name, email, password } = req.body;
         if (name.length < 3 || password.length < 8 || !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
@@ -15,7 +15,7 @@ const registerUser = async (req, res) => {
 
         const hashedPassword = await hashPassword(password);
         const newUser = new User({ name, email, password: hashedPassword });
-        newUser.save()
+        await newUser.save()
         res.status(201).json({ success: true, message: 'new user created', user: newUser })
     }
     catch (error) {
@@ -24,7 +24,7 @@ const registerUser = async (req, res) => {
     }
 }
 
-const loginUser = async (req, res) => {
+const loginController = async (req, res) => {
     try {
         const { email, password } = req.body;
         if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/) || password.length < 8) {
@@ -53,6 +53,6 @@ const loginUser = async (req, res) => {
 
 
 module.exports = {
-    registerUser,
-    loginUser
+    signupController,
+    loginController
 }
