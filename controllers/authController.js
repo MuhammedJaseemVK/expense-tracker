@@ -27,7 +27,7 @@ const signupController = async (req, res) => {
 const loginController = async (req, res) => {
     try {
         const { email, password } = req.body;
-        
+
         if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/) || password.length < 8) {
             return res.status(400).send({ success: false, message: 'email or password is invalid' })
         }
@@ -52,8 +52,21 @@ const loginController = async (req, res) => {
     }
 }
 
+const getUserInfoController = async (req, res) => {
+    try{
+        const id = req.body.user;
+        const user = await User.findById(id);
+        res.status(200).send({success:true,message:user})
+    }
+    catch(error){
+        console.error(error);
+        res.status(500).send({success:false,message:'Internal server Error'});
+    }
+}
+
 
 module.exports = {
     signupController,
-    loginController
+    loginController,
+    getUserInfoController
 }

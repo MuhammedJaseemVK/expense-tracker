@@ -52,7 +52,7 @@ const updateTransactionController = async (req, res) => {
     }
 }
 
-const deleteTransaction = async (req, res) => {
+const deleteTransactionController = async (req, res) => {
     try {
         const id = req.params.id;
         let transaction = await Transaction.findById(id);
@@ -78,5 +78,5 @@ module.exports = {
     createTransactionController,
     getAllTransactionsController,
     updateTransactionController,
-    deleteTransaction
+    deleteTransactionController
 }
