@@ -3,12 +3,14 @@ const dotenv=require('dotenv');
 const connectDB =require('./config/db');
 const authRoutes =require('./routes/authRoutes');
 const transactionRoutes = require("./routes/transactionRoutes");
+const cors=require('cors');
 
 dotenv.config();
 const app=express();
 const PORT =process.env.PORT || 8080;
 connectDB();
 
+app.use(cors());
 app.use(express.json());
 
 app.get('/',(req,res)=>{
