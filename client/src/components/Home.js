@@ -1,8 +1,12 @@
-import React from 'react'
+import React from 'react';
+import Ledger from './Ledger';
 
 function Home() {
+
   return (
-    <div>Home</div>
+    <div className='my-5'>
+      <Ledger />
+    </div>
   )
 }
 
