@@ -34,7 +34,7 @@ const loginController = async (req, res) => {
 
         const user = await User.findOne({ email })
         if (!user) {
-            return res.send(404).send({ success: false, message: 'Invalid email or password' });
+            return res.status(404).send({ success: false, message: 'Invalid email or password' });
         }
 
         const match = await comparePassword(password, user.password);
