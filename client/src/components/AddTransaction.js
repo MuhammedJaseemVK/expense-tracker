@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import TransactionContext from '../context/TransactionContext';
 
-function AddTransaction() {
+function AddTransaction(props) {
 
     const {addTransaction} =useContext(TransactionContext);
 
@@ -19,6 +19,7 @@ function AddTransaction() {
     const handleSubmit =(e)=>{
         e.preventDefault();
         addTransaction(data);
+        props.showAlert('Transaction added successfully','success');
     }
 
     return (

@@ -1,11 +1,11 @@
 import React from 'react';
 import Ledger from './Ledger';
 
-function Home() {
+function Home({showAlert}) {
 
   return (
     <div className='my-5'>
-      <Ledger />
+      <Ledger showAlert={showAlert} />
     </div>
   )
 }
