@@ -1,11 +1,9 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Transaction from './Transaction';
 import TransactionContext from '../context/TransactionContext';
 import AddTransaction from './AddTransaction';
 
 function Ledger({ showAlert }) {
-    const navigate = useNavigate();
     const openRef = useRef(null);
     const closeRef = useRef(null);
 
@@ -33,18 +31,15 @@ function Ledger({ showAlert }) {
         setTransaction({ ...transaction, [e.target.name]: e.target.value });
     }
 
-    const handleType =(e)=>{
-        setTransaction({...transaction,type:e.target.value});
+    const handleType = (e) => {
+        setTransaction({ ...transaction, type: e.target.value });
     }
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (!token) {
-            navigate('/login');
+        const verifyToken = async () => {
+            await getAllTransactions();
         }
-        else {
-            getAllTransactions();
-        }
+        verifyToken();
         // eslint-disable-next-line
     }, []);
 

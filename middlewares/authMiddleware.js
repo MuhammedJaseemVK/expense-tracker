@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 dotenv.config('../../');
 const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 
-const verifyUser = async (req, res, next) => {
+const verifyUser = (req, res, next) => {
     const token = req.header('authToken');
     if (!token) {
         return res.status(401).send({ success: false, message: "Unauthorized.Token not found" });
@@ -15,6 +15,9 @@ const verifyUser = async (req, res, next) => {
         next();
     }
     catch (error) {
+        if(error.name==="TokenExpiredError"){
+            return res.status(401).send({message:"token expired"});
+        }
         console.error(error);
         res.status(401).send({ error: "Please authenticate using a valid token" });
     }

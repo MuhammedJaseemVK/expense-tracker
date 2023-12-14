@@ -11,11 +11,11 @@ function Signup(props) {
         setData({ ...data, [e.target.name]: e.target.value });
     }
 
-    useEffect(() => {
-        if (localStorage.getItem('token')) {
-            navigate('/');
-        }
-    }, []);
+    // useEffect(() => {
+    //     if (localStorage.getItem('token')) {
+    //         navigate('/');
+    //     }
+    // }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
