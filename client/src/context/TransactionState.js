@@ -1,13 +1,17 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import TransactionContext from "./TransactionContext";
 import axios from 'axios';
+import UserContext from './UserContext';
+
 
 function TransactionState(props) {
     const [transactions, setTransactions] = useState([]);
     const BASE_URL = 'http://localhost:8080/api/v1';
+    const { getUserInfo } = useContext(UserContext);
 
     const getAllTransactions = async () => {
         try {
+            await getUserInfo()
             const response = await axios.get(`${BASE_URL}/transaction/`, {
                 headers: {
                     "authToken": localStorage.getItem('token')
@@ -23,6 +27,11 @@ function TransactionState(props) {
 
     const addTransaction = async (data) => {
         try {
+            await getUserInfo();
+            const token =localStorage.getItem('token')
+            if(!token){
+                return
+            }
             const response = await axios.post(`${BASE_URL}/transaction/create`, data, {
                 headers: {
                     "authToken": localStorage.getItem('token')
@@ -34,12 +43,20 @@ function TransactionState(props) {
         }
         catch (error) {
             console.error(error);
+            if (error.response && error.response.status === 401 && error.response.data.message === "Unauthorized.Token not found") {
+                props.showAlert(error.response.data.message, 'danger');
+            }
         }
 
     }
 
     const deleteTransaction = async (id) => {
         try {
+            await getUserInfo()
+            const token =localStorage.getItem('token')
+            if(!token){
+                return
+            }
             const response = await axios.delete(`${BASE_URL}/transaction/delete/${id}`, {
                 headers: {
                     "authToken": localStorage.getItem('token'),
@@ -57,6 +74,11 @@ function TransactionState(props) {
 
     const updateTransaction = async (id, data) => {
         try {
+            await getUserInfo()
+            const token =localStorage.getItem('token')
+            if(!token){
+                return
+            }
             const response = await axios.put(`${BASE_URL}/transaction/update/${id}`, data, {
                 headers: {
                     "authToken": localStorage.getItem('token')

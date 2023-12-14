@@ -26,8 +26,8 @@ function App() {
   return (
     <div>
       <Router>
-        <TransactionState>
           <UserState>
+        <TransactionState>
             <Navbar />
             <Alert alert={alert} />
             <Routes>
@@ -35,8 +35,8 @@ function App() {
               <Route path='/signup' element={<Signup showAlert={showAlert} />} />
               <Route path='/login' element={<Login showAlert={showAlert} />} />
             </Routes>
-          </UserState>
         </TransactionState>
+          </UserState>
       </Router>
     </div>
   );

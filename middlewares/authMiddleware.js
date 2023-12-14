@@ -19,7 +19,7 @@ const verifyUser = (req, res, next) => {
             return res.status(401).send({message:"token expired"});
         }
         console.error(error);
-        res.status(401).send({ error: "Please authenticate using a valid token" });
+        return res.status(401).send({ error: "Please authenticate using a valid token" });
     }
 }
 

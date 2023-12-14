@@ -27,7 +27,7 @@ const comparePassword = async (password, hashedPassword) => {
 
 const generateToken = async (user) => {
     try {
-        const token = await JWT.sign({ _id: user }, JWT_SECRET_KEY, { expiresIn: '1m' })
+        const token = await JWT.sign({ _id: user }, JWT_SECRET_KEY, { expiresIn: '1h' })
         if(token){
             return token
         }

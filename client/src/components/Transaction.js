@@ -9,6 +9,10 @@ function Transaction({ transaction, showAlert, editTransaction,setTransaction })
 
     const handleDelete = (id) => {
         deleteTransaction(id);
+        const token=localStorage.getItem('token');
+        if (!token) {
+            return showAlert('Cannot perform action - Login again', 'warning');
+        }
         showAlert('Transaction deleted', 'danger');
     }
 

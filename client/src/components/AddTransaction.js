@@ -11,7 +11,6 @@ function AddTransaction(props) {
         category: ''
     })
 
-
     const handleChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value });
     }
@@ -20,15 +19,28 @@ function AddTransaction(props) {
         setData({ ...data, type: e.target.value })
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        addTransaction(data);
-        props.showAlert('Transaction added successfully', 'success');
-        setData({
-            amount: '',
-            type: '',
-            category: ''
-        })
+    const handleSubmit = async (e) => {
+        try {
+            e.preventDefault();
+            await addTransaction(data);
+            const token=localStorage.getItem('token');
+            if (!token) {
+                return props.showAlert('Cannot perform action - Login again', 'warning');
+            }
+            props.showAlert('Transaction added successfully', 'success');
+            setData({
+                amount: '',
+                type: '',
+                category: ''
+            })
+        }
+        catch (error) {
+            console.error(error);
+            if (error.response && error.response.status === 401 && error.response.data.message === "Unauthorized.Token not found") {
+                props.showAlert(error.response.data.message, 'danger');
+            }
+
+        }
     }
 
     return (
