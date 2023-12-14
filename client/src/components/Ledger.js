@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import Transaction from './Transaction';
 import TransactionContext from '../context/TransactionContext';
 import AddTransaction from './AddTransaction';
+import UserContext from '../context/UserContext';
 
 function Ledger({ showAlert }) {
     const openRef = useRef(null);
@@ -14,6 +15,7 @@ function Ledger({ showAlert }) {
     })
 
     const { transactions, getAllTransactions, updateTransaction } = useContext(TransactionContext);
+    const {getUserInfo} =useContext(UserContext);
 
     const editTransaction = (currentTransaction) => {
         openRef.current.click();
@@ -37,6 +39,7 @@ function Ledger({ showAlert }) {
 
     useEffect(() => {
         const verifyToken = async () => {
+            await getUserInfo();
             await getAllTransactions();
         }
         verifyToken();

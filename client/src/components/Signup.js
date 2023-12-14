@@ -1,21 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
+import UserContext from '../context/UserContext';
 
 function Signup(props) {
 
     const [data, setData] = useState({ name: '', email: '', password: '', confirmPassword: '' });
     const navigate = useNavigate();
+    const {getUserInfo} =useContext(UserContext);
+
     const handleChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value });
     }
 
-    // useEffect(() => {
-    //     if (localStorage.getItem('token')) {
-    //         navigate('/');
-    //     }
-    // }, []);
+    useEffect(() => {
+        const verifyToken = async () => {
+            await getUserInfo();
+        }
+        verifyToken();
+        // eslint-disable-next-line
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();

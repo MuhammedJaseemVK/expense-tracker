@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
 import TransactionContext from "./TransactionContext";
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
 function TransactionState(props) {
     const [transactions, setTransactions] = useState([]);
     const BASE_URL = 'http://localhost:8080/api/v1';
-    const navigate = useNavigate();
 
     const getAllTransactions = async () => {
         try {
@@ -19,10 +17,6 @@ function TransactionState(props) {
             setTransactions(response.data.transactions);
         }
         catch (error) {
-            if (error.response && error.response.status === 401 && error.response.data.message === "token expired") {
-                console.log("token expired");
-                navigate('/login');
-            }
             console.log(error);
         }
     }
@@ -83,6 +77,7 @@ function TransactionState(props) {
             console.error(error);
         }
     }
+
 
     return (
         <TransactionContext.Provider value={{ transactions, getAllTransactions, addTransaction, deleteTransaction, updateTransaction }}>
