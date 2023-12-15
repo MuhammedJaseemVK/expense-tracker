@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 function UserState(props) {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
   const BASE_URL = 'http://localhost:8080/api/v1/auth';
   const navigate = useNavigate();
   const location = useLocation();
@@ -13,6 +13,7 @@ function UserState(props) {
     try {
       const token = localStorage.getItem('token')
       if (!token) {
+        setUser(null);
         if (location.pathname === '/signup') {
           return navigate('/signup')
         }
@@ -26,12 +27,17 @@ function UserState(props) {
         }
       })
       console.log(response.data);
-      setUser(response.data);
+      setUser(
+        {
+          email:response?.data?.message.email,
+          name:response?.data?.message.name
+        });
       navigate('/');
     }
     catch (error) {
       if (error.response && error.response.status === 401 && error.response.data.message === "token expired") {
         console.log("token expired");
+        setUser(null);
         navigate('/login');
         localStorage.removeItem('token');
       }
@@ -39,7 +45,7 @@ function UserState(props) {
     }
   }
   return (
-    <UserContext.Provider value={{ user, getUserInfo }} >
+    <UserContext.Provider value={{ user,setUser, getUserInfo }} >
       {props.children}
     </UserContext.Provider>
   )

@@ -26,17 +26,17 @@ function App() {
   return (
     <div>
       <Router>
-          <UserState>
-        <TransactionState>
-            <Navbar />
+        <UserState>
+          <TransactionState>
+            <Navbar showAlert={showAlert} />
             <Alert alert={alert} />
             <Routes>
               <Route path='/' element={<Home showAlert={showAlert} />} />
               <Route path='/signup' element={<Signup showAlert={showAlert} />} />
               <Route path='/login' element={<Login showAlert={showAlert} />} />
             </Routes>
-        </TransactionState>
-          </UserState>
+          </TransactionState>
+        </UserState>
       </Router>
     </div>
   );
