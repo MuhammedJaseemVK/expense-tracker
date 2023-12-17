@@ -46,19 +46,19 @@ function AddTransaction(props) {
     return (
         <form style={{ maxWidth: '400px' }} onSubmit={handleSubmit}>
             <div className="mb-3">
-                <label htmlFor="amount" className="form-label">amount</label>
-                <input type="number" className="form-control" id="amount" name="amount" value={data.amount} onChange={handleChange} required />
+                <label htmlFor="amount" className="form-label">Amount</label>
+                <input type="number" className="form-control border border-1 border-black" id="amount" name="amount" value={data.amount} onChange={handleChange} required />
             </div>
-            <select className="form-select mb-3" aria-label="Default select example" value={data.type} required onChange={handleType}>
-                <option value="" disabled>Select an option</option>
+            <select className="form-select mb-3 border border-1 border-black" aria-label="Default select example" value={data.type} required onChange={handleType}>
+                <option value="" disabled>Select transaction type</option>
                 <option value='income'>Income</option>
                 <option value='expense'>Expense</option>
             </select>
             <div className="mb-3">
                 <label htmlFor="category" className="form-label">Category</label>
-                <input type="text" className="form-control" id="category" name="category" value={data.category} onChange={handleChange} required />
+                <input type="text" className="form-control border border-1 border-black" id="category" name="category" value={data.category} onChange={handleChange} required />
             </div>
-            <button type="submit" className="btn btn-primary">Add</button>
+            <button type="submit" className="btn btn-dark">Add</button>
         </form>
     )
 }

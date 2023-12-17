@@ -3,7 +3,7 @@ import { Link,useNavigate } from 'react-router-dom';
 import UserContext from '../context/UserContext';
 
 
-function Navbar({showAlert}) {
+function Navbar({showAlert,setSearchTerm}) {
     const { user } = useContext(UserContext);
     const navigate=useNavigate();
 
@@ -13,8 +13,12 @@ function Navbar({showAlert}) {
         showAlert('Logged out successfully','warning');
     }
 
+    const handleChange =(e)=>{
+        setSearchTerm(e.target.value);
+    }
+
     return (
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
             <div className="container-fluid">
                 <Link to='/' className="navbar-brand" >Expense tracker</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,9 +51,8 @@ function Navbar({showAlert}) {
                             </ul>)
                     }
 
-                    <form className="d-flex" role="search">
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button className="btn btn-outline-success" type="submit">Search</button>
+                    <form className="d-flex">
+                        <input className="form-control border border-1 border-blackme-2" type="search" placeholder="Search" onChange={handleChange} aria-label="Search" />
                     </form>
                 </div>
             </div>

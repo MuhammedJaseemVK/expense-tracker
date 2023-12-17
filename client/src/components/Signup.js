@@ -49,25 +49,25 @@ function Signup(props) {
     }
 
     return (
-        <div className='my-5'>
+        <div>
             <form onSubmit={handleSubmit} style={{ maxWidth: '400px', margin: 'auto' }}>
                 <div className="mb-3">
                     <label htmlFor="name" className="form-label">Name</label>
-                    <input type="text" className="form-control" id="name" name="name" onChange={handleChange} minLength={3} required value={data.name} />
+                    <input type="text" className="form-control border border-1 border-black" id="name" name="name" onChange={handleChange} minLength={3} required value={data.name} />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>
-                    <input type="email" className="form-control" id="email" name="email" aria-describedby="emailHelp" onChange={handleChange} required value={data.email} />
+                    <input type="email" className="form-control border border-1 border-black" id="email" name="email" aria-describedby="emailHelp" onChange={handleChange} required value={data.email} />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="password" className="form-label">Password</label>
-                    <input type="password" className="form-control" id="password" name='password' onChange={handleChange} minLength={8} required value={data.password} />
+                    <input type="password" className="form-control border border-1 border-black" id="password" name='password' onChange={handleChange} minLength={8} required value={data.password} />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="confirmPassword" className="form-label">Confirm password</label>
-                    <input type="password" className="form-control" id="confirmPassword" name='confirmPassword' onChange={handleChange} minLength={8} required value={data.confirmPassword} />
+                    <input type="password" className="form-control border border-1 border-black" id="confirmPassword" name='confirmPassword' onChange={handleChange} minLength={8} required value={data.confirmPassword} />
                 </div>
-                <button type="submit" className="btn btn-primary">Signup</button>
+                <button type="submit" className="btn btn-dark">Signup</button>
             </form>
             <div className='mt-2'>
                 <Link to='/login' className='text-center'>

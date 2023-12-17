@@ -1,11 +1,10 @@
 import React from 'react';
 import Ledger from './Ledger';
 
-function Home({showAlert}) {
-
+function Home({showAlert,searchTerm}) {
   return (
-    <div className='my-5'>
-      <Ledger showAlert={showAlert} />
+    <div>
+      <Ledger showAlert={showAlert} searchTerm={searchTerm} />
     </div>
   )
 }

@@ -11,6 +11,7 @@ import UserState from './context/UserState';
 
 function App() {
   const [alert, setAlert] = useState(null);
+  const [searchTerm,setSearchTerm] =useState('');
 
   const showAlert = (message, type) => {
     setAlert({
@@ -21,17 +22,18 @@ function App() {
     setTimeout(() => {
       setAlert(null);
     }, 3000);
-
   }
+
+
   return (
-    <div>
+    <div className='bg-dark-subtle min-vh-100'>
       <Router>
         <UserState>
           <TransactionState>
-            <Navbar showAlert={showAlert} />
+            <Navbar showAlert={showAlert} setSearchTerm={setSearchTerm} />
             <Alert alert={alert} />
             <Routes>
-              <Route path='/' element={<Home showAlert={showAlert} />} />
+              <Route path='/' element={<Home showAlert={showAlert} searchTerm={searchTerm} />} />
               <Route path='/signup' element={<Signup showAlert={showAlert} />} />
               <Route path='/login' element={<Login showAlert={showAlert} />} />
             </Routes>

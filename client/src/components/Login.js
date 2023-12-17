@@ -54,17 +54,17 @@ function Login(props) {
   }
 
   return (
-    <div className='my-5 '>
+    <div>
       <form style={{ maxWidth: '400px' }} className='mx-auto' onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">Email address</label>
-          <input type="email" className="form-control" id="email" name='email' value={data.email} aria-describedby="emailHelp" onChange={handleChange} required />
+          <input type="email" className="form-control border border-1 border-black" id="email" name='email' value={data.email} aria-describedby="emailHelp" onChange={handleChange} required />
         </div>
         <div className="mb-3">
           <label htmlFor="password" className="form-label">Password</label>
-          <input type="password" className="form-control" id="password" value={data.password} name='password' onChange={handleChange} minLength={8} required />
+          <input type="password" className="form-control border border-1 border-black" id="password" value={data.password} name='password' onChange={handleChange} minLength={8} required />
         </div>
-        <button type="submit" className="btn btn-primary">Login</button>
+        <button type="submit" className="btn btn-dark">Login</button>
       </form>
       <div className='mt-2'>
         <Link to='/signup' className='text-center'>
