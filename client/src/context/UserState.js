@@ -5,7 +5,7 @@ import axios from 'axios';
 
 function UserState(props) {
   const [user, setUser] = useState(null);
-  const BASE_URL = 'expense-tracker-server-9cwqshmgd-jaseems-projects.vercel.appapi/v1/auth';
+  const BASE_URL = 'expense-tracker-server-9cwqshmgd-jaseems-projects.vercel.app/api/v1/auth';
   const navigate = useNavigate();
   const location = useLocation();
 
