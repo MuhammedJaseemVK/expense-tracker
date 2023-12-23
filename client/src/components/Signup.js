@@ -49,7 +49,7 @@ function Signup(props) {
     }
 
     return (
-        <div>
+        <div className='px-3 bg-dark-subtle'>
             <form onSubmit={handleSubmit} style={{ maxWidth: '400px', margin: 'auto' }}>
                 <div className="mb-3">
                     <label htmlFor="name" className="form-label">Name</label>

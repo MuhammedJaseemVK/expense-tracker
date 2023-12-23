@@ -54,7 +54,7 @@ function Login(props) {
   }
 
   return (
-    <div>
+    <div className='px-3'>
       <form style={{ maxWidth: '400px' }} className='mx-auto' onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">Email address</label>
