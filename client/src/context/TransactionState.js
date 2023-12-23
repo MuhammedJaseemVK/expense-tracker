@@ -6,7 +6,7 @@ import UserContext from './UserContext';
 
 function TransactionState(props) {
     const [transactions, setTransactions] = useState([]);
-    const BASE_URL = 'expense-tracker-ashy-theta.vercel.app/api/v1';
+    const BASE_URL = 'https://expense-tracker-ashy-theta.vercel.app/api/v1';
     const { getUserInfo } = useContext(UserContext);
 
     const getAllTransactions = async () => {

@@ -29,7 +29,7 @@ function Signup(props) {
             return
         }
         try {
-            const response = await axios.post('expense-tracker-ashy-theta.vercel.app/api/v1/auth/register', data)
+            const response = await axios.post('https://expense-tracker-ashy-theta.vercel.app/api/v1/auth/register', data)
             console.log(response);
             const success = response.data.success;
             if (success) {
