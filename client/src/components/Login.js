@@ -29,7 +29,7 @@ function Login(props) {
     e.preventDefault();
 
     try {
-      const response = await axios.post('https://expense-tracker-ashy-theta.vercel.app//api/v1/auth/login', data);
+      const response = await axios.post('https://expense-tracker-ashy-theta.vercel.app/api/v1/auth/login', data);
       console.log(response.data);
       const token = response.data.token
       if (!token) {
