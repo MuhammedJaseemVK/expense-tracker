@@ -10,7 +10,14 @@ const app=express();
 const PORT =process.env.PORT || 8080;
 connectDB();
 
-app.use(cors());
+const corsOptions = {
+    origin: ['https://the-expense-tracker-web.vercel.app'],
+    methods: ['GET,PUT,PATCH,POST,DELETE'],
+    credentials: true
+  };
+  
+  app.use(cors(corsOptions));
+  
 app.use(express.json());
 
 app.get('/',(req,res)=>{
