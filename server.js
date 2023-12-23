@@ -11,7 +11,7 @@ const PORT =process.env.PORT || 8080;
 connectDB();
 
 const corsOptions = {
-    origin: ['https://the-expense-tracker-web.vercel.app'],
+    origin: ['https://expense-tracker-client-seven.vercel.app/login'],
     methods: ['GET,PUT,PATCH,POST,DELETE'],
     credentials: true
   };
