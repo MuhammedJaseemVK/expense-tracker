@@ -2,10 +2,10 @@
   "name": "expense-tracker",
   "version": "1.0.0",
   "description": "A basic expense tracker application using MERN stack",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "dev": "nodemon server.js",
-    "start": "node server.js"
+    "dev": "nodemon index.js",
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
